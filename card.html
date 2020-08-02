@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic|Oswald:400,700" media="screen"> 
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 50px auto;
+            width: 1000px;
+            height: 800px;
+            text-align: center;
+        }
+
+        div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        img {
+            cursor:pointer
+        }
+
+        div{
+            font-family: "Oswald";
+        }
+        div:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.568);
+        } 
+
+        a {
+            text-decoration: none;
+            outline: none;
+            display: inline-block;
+            width: 140px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 45px;
+            margin: 10px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: #524f4e;
+            background: rgb(226, 226, 226);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+            transition: .3s;
+        }
+
+        a:hover {
+            background: #2EE59D;
+            box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+            color: white;
+            transform: translateY(-7px);
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="picturesHere"></section>
+
+    <script>
+        let gallery = [
+            {
+                fname: 'card.jpg',
+                sw: '300',
+                title1: 'Тайная жизнь',
+                title2: 'домашних животных',
+                cost: '15',
+                valuta: 'руб.',
+                type: 'blu-ray.jpg',
+                discount: true,
+                rating: '4',
+                btnPic: 'order.jpg'
+            },
+
+            {
+                fname: 'ferd.jpg',
+                sw: '300',
+                title1: 'Фердинанд',
+                title2: 'Рождественское чудо',
+                cost: '20',
+                valuta: 'руб.',
+                type: 'blu-ray.jpg',
+                discount: true,
+                rating: '4',
+                btnPic: 'order.jpg'
+            },
+
+            {
+                fname: 'toy4.jpg',
+                sw: '300',
+                title1: 'История игрушек 4',
+                title2: 'Приключения Вилкивса',
+                cost: '17',
+                valuta: 'руб.',
+                type: 'blu-ray.jpg',
+                discount: true,
+                rating: '4',
+                btnPic: 'order.jpg'
+            },
+        ];
+
+        let s = '';
+
+        for (i = 0; i < gallery.length; i++) {
+            let action = disc(gallery[i].discount, gallery[i].cost);
+            // let stars = '';
+            // stars = starRating(gallery[i].rating);
+            //  <p>${stars}</p>
+            s += `
+         <div>
+            <img src="card/${gallery[i].fname}" width="${gallery[i].sw}" alt="">
+            <h1>${gallery[i].title1}</h1>
+            <h2>${gallery[i].title2}</h2>
+            <p><b>${action} ${gallery[i].valuta} </b>
+                <s>${gallery[i].cost} ${gallery[i].valuta}</s></p> 
+            <a href="">Order</a>
+          
+         </div>`
+        };
+        picturesHere.innerHTML = s;
+
+        function disc(discount, cost) {
+            let a;
+            if (discount == true) {
+                a = +cost - (+cost / 10)
+            }
+            else { a = '' }
+            return a;
+        }
+
+        // function starRating(r) {
+        //     star = '';
+        //     for (i = 0; i < +r; i++) {
+        //         star += `<img src="card/star1.png" width="30">`                     
+        //     }
+        //     return star;
+        // }
+
+    </script>
+
+</body>
+
+</html>
